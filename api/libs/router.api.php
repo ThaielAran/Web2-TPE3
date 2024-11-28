@@ -63,6 +63,8 @@ class Router {
         //Si ninguna ruta coincide con el pedido y se configuró ruta por defecto.
         if ($this->defaultRoute != null)
             $this->defaultRoute->run();
+        
+            
     }
     
     public function addRoute ($url, $verb, $controller, $method) {
