@@ -21,12 +21,12 @@ class ReviewApiController {
             if (isset($req->query->direct))
                 $direct = $req->query->direct;
 
-        $id_review = null;
+        $id_movie = null;
         if(isset($req->query->id_review)) {
-            $id_review = $req->query->id_review;
+            $id_movie = $req->query->id_review;
         }
         
-        $reviews=$this->model->getReviews($id_review, $orderBy, $direct);
+        $reviews=$this->model->getReviews($id_movie, $orderBy, $direct);
 
         if(!$reviews){ 
             return $this->view->response('No reviews found', 404);
