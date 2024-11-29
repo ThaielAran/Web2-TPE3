@@ -1,8 +1,8 @@
 <?php
-
+require_once 'api.model.php';
 class MovieModel extends ApiModel{
 
-    public function getMovies($genre=null, $orderBy=null){
+    public function getMovies($genre=null, $orderBy=null, $direct='ASC'){
         $sql = 'SELECT * FROM movies';
 
         if ($genre){
@@ -52,7 +52,13 @@ class MovieModel extends ApiModel{
                     $sql .= ' ORDER BY genre';
                     break;
             }
+            if ($direct === 'DESC') {
+                $sql .= ' DESC';
+            } else {
+                $sql .= ' ASC';
+            }
         }
+
 
         $query = $this->db->prepare($sql);
         $query->execute();

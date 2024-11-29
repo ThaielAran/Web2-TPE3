@@ -2,7 +2,7 @@
 
 class ReviewModel extends ApiModel{
 
-    public function getReviews($id_movie=null, $orderBy=null){
+    public function getReviews($id_movie=null, $orderBy=null, $direct='ASC'){
         $sql = 'SELECT * FROM reviews';
 
         if ($id_movie){
@@ -17,6 +17,11 @@ class ReviewModel extends ApiModel{
                 case 'rating':
                     $sql .= ' ORDER BY rating';
                     break;
+            }
+            if ($direct === 'DESC') {
+                $sql .= ' DESC';
+            } else {
+                $sql .= ' ASC';
             }
         }
 
