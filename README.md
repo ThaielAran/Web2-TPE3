@@ -48,7 +48,7 @@ Returns a review with the specified id
 * **e.g GET  https://localhost/WEB2TPE3/api/reviews/1** : returns a movie which id is 1
 
 ### POST: /reviews/
-Creates a new review on database. Values are send through body.
+Creates a new review on database. Values are send through body. When executed successfully returns a message with the new review's id.
 * **e.g POST  https://localhost/WEB2TPE3/api/reviews/** : creates a new review with following data (send through HTTPRequest body) 
 ```json
  {
@@ -61,7 +61,7 @@ Creates a new review on database. Values are send through body.
 (_All fields are required_)
 
 ### PUT: /reviews/:id
-Updates values (send through body) on a review on database.
+Updates values (send through body) on a review on database.When executed successfully returns the modified review.
 * **e.g PUT  https://localhost/WEB2TPE3/api/reviews/1** : edits review with id 1 with following data (send through HTTPRequest body)
 ```json
  {
