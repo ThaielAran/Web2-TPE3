@@ -1,7 +1,8 @@
 # TPE_Entrega3
 ## API RESTful : Movies/Reviews
 ### Description
-This project is an API RESTful web service that allows access to the respective Movie Reviews database to make use of its data, allowing to get movies form it and "CRUD" reviews.
+This project is an API RESTful web service that allows access to the Movie Reviews database to make use of its data, allowing to get movies form it and "CRUD" reviews.
+The database should be runnung on your apache server.
 
 ## Endpoints
 
