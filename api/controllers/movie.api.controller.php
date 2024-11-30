@@ -11,7 +11,8 @@ class MovieApiController {
         $this->view = new ApiView();
     }
 
-    public function getMovies($req){
+    public function getMovies($req, $res){
+        
         $orderBy = false;
         $direct = 'ASC';
         if(isset($req->query->orderBy))
@@ -34,7 +35,7 @@ class MovieApiController {
         
     }
 
-    public function getMovie($req){
+    public function getMovie($req, $res){
         $id = $req->params->id;
         $movie = $this->model->getMovie($id);
         if(!$movie){

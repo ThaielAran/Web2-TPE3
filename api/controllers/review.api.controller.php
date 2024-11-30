@@ -13,7 +13,7 @@ class ReviewApiController {
         $this->view = new ApiView();
     }
 
-    public function getReviews($req){
+    public function getReviews($req, $res){
         $orderBy = false;
         $direct = 'ASC';
         if(isset($req->query->orderBy))
@@ -36,7 +36,7 @@ class ReviewApiController {
         
     }
 
-    public function getReview($req){
+    public function getReview($req, $res){
         $id = $req->params->id;
         $review = $this->model->getReview($id);
         if(!$review){
@@ -45,7 +45,7 @@ class ReviewApiController {
         return $this->view->response($review, 200);
     }
 
-    public function addReview($req){
+    public function addReview($req, $res){
 
         if (empty($req->body->id_movie)  || empty($req->body->body) || empty($req->body->rating)) {
             return $this->view->response('Please complete all fields', 400);
@@ -60,7 +60,7 @@ class ReviewApiController {
         return $this->view->response("Added review under id $id", 201);
     }
 
-    public function editReview($req){
+    public function editReview($req, $res){
 
         $review=$this->model->getReview($req->params->id);
         if(!$review){
@@ -83,7 +83,7 @@ class ReviewApiController {
         return $this->view->response($review, 200);
     }
 
-    public function deleteReview($req){
+    public function deleteReview($req, $res){
         $review=$this->model->getReview($req->params->id);
         if(!$review){
             return $this->view->response('Review does not exist', 404);

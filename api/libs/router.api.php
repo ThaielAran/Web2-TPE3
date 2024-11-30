@@ -1,4 +1,6 @@
 <?php
+require_once 'request.php';
+require_once 'response.php';
 
 class Route {
     private $url;
@@ -33,21 +35,25 @@ class Route {
         }
         return true;
     }
-    public function run(){
+    public function run($request, $response){
         $controller = $this->controller;  
         $method = $this->method;
-        $params = $this->params;
+        $request->params = (object) $this->params;
        
-        (new $controller())->$method($params);
+        (new $controller())->$method($request, $response);
     }
 }
 
 class Router {
     private $routeTable = [];
     private $defaultRoute;
+    private $request;
+    private $response;
 
     public function __construct() {
         $this->defaultRoute = null;
+        $this->request = new Request();
+        $this->response = new Response();
     }
 
     public function route($url, $verb) {
@@ -56,13 +62,13 @@ class Router {
             if($route->match($url, $verb)){
                 //TODO: ejecutar el controller//ejecutar el controller
                 // pasarle los parametros
-                $route->run();
+                $route->run($this->request, $this->response);
                 return;
             }
         }
         //Si ninguna ruta coincide con el pedido y se configuró ruta por defecto.
         if ($this->defaultRoute != null)
-            $this->defaultRoute->run();
+            $this->defaultRoute->run($this->request, $this->response);
         
             
     }
