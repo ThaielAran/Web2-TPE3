@@ -6,32 +6,32 @@ class MovieModel extends ApiModel{
         $sql = 'SELECT * FROM movies';
 
         if ($genre){
-            $sql .= 'WHERE genre=';
+            $sql .= ' WHERE genre=';
             switch ($genre) {
                 case stristr($genre, 'Adventure'):
-                    $sql .= ' WHERE genre = "Adventure"';
+                    $sql .= ' "Adventure"';
                     break;
                 case stristr($genre, 'Comedy'):
-                    $sql .= ' WHERE genre = "Comedy"';
+                    $sql .= ' "Comedy"';
                     break;
                 case stristr($genre, 'Drama'):
-                    $sql .= ' WHERE genre = "Drama"';
+                    $sql .= ' "Drama"';
                     break;
                 case stristr($genre, 'Fantasy'):
-                    $sql .= ' WHERE genre = "Fantasy"';
+                    $sql .= ' "Fantasy"';
                     break;
                 case stristr($genre, 'Horror'):
-                    $sql .= ' WHERE genre = "Horror"';
+                    $sql .= ' "Horror"';
                     break;
                 case stristr($genre, 'Sci-Fi'):
-                    $sql .= ' WHERE genre = "Sci-Fi"';
+                    $sql .= ' "Sci-Fi"';
             }
         }
 
         if ($orderBy) {
             switch ($orderBy) {
-                case 'id':
-                    $sql .= ' ORDER BY id';
+                case 'id_movie':
+                    $sql .= ' ORDER BY id_movie';
                     break;
                 case 'title':
                     $sql .= ' ORDER BY title';

@@ -1,4 +1,5 @@
 <?php
+
 require_once 'request.php';
 require_once 'response.php';
 
@@ -31,7 +32,7 @@ class Route {
                 return false;
             } //es un parametro
             else
-            $this->params[$part] = $partsURL[$key];
+            $this->params[''.substr($part,1)] = $partsURL[$key];
         }
         return true;
     }
@@ -57,6 +58,7 @@ class Router {
     }
 
     public function route($url, $verb) {
+        
         //$ruta->url //no compila!
         foreach ($this->routeTable as $route) {
             if($route->match($url, $verb)){
@@ -69,9 +71,8 @@ class Router {
         //Si ninguna ruta coincide con el pedido y se configuró ruta por defecto.
         if ($this->defaultRoute != null)
             $this->defaultRoute->run($this->request, $this->response);
-        
-            
     }
+
     
     public function addRoute ($url, $verb, $controller, $method) {
         $this->routeTable[] = new Route($url, $verb, $controller, $method);

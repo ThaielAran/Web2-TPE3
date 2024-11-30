@@ -6,7 +6,7 @@ class ReviewModel extends ApiModel{
         $sql = 'SELECT * FROM reviews';
 
         if ($id_movie){
-            $sql .= 'WHERE id_movie= '.$id_movie;
+            $sql .= ' WHERE id_movie='.$id_movie;
         }
 
         if ($orderBy) {
@@ -16,6 +16,12 @@ class ReviewModel extends ApiModel{
                     break;
                 case 'rating':
                     $sql .= ' ORDER BY rating';
+                    break;
+                case 'id_review':
+                    $sql .= ' ORDER BY id_review';
+                    break;
+                case 'body':
+                    $sql .= ' ORDER BY body';
                     break;
             }
             if ($direct === 'DESC') {
@@ -42,7 +48,7 @@ class ReviewModel extends ApiModel{
     }
 
     public function addReview($id_movie, $body, $rating){
-        $query = $this->db->prepare('INSERT INTO reviews (id_movie, body, rating) VALUES (?, ?, ?, ?, ?, ?)');
+        $query = $this->db->prepare('INSERT INTO reviews (id_movie, body, rating) VALUES (?, ?, ?)');
         $query->execute([$id_movie, $body, $rating]);
         $id = $this->db->lastInsertId();
         return $id;

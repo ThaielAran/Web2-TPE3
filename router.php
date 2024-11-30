@@ -8,14 +8,14 @@ $router = new Router();
 
 // tabla de ruteo
 $router->addRoute('movies',         'GET',      'MovieApiController',       'getMovies');
-$router->addRoute('movies/:ID',     'GET',      'MovieApiController',       'getMovie');
+$router->addRoute('movies/:id',     'GET',      'MovieApiController',       'getMovie');
 
 // tabla de ruteo reviews
 $router->addRoute('reviews',        'GET',      'ReviewApiController',      'getReviews');
-$router->addRoute('reviews/:ID',    'GET',      'ReviewApiController',      'getReview');
+$router->addRoute('reviews/:id',    'GET',      'ReviewApiController',      'getReview');
 $router->addRoute('reviews',        'POST',     'ReviewApiController',      'addReview');
-$router->addRoute('reviews/:ID',    'PUT',      'ReviewApiController',      'editReview');
-$router->addRoute('reviews/:ID',    'DELETE',   'ReviewApiController',      'deleteReview');
+$router->addRoute('reviews/:id',    'PUT',      'ReviewApiController',      'editReview');
+$router->addRoute('reviews/:id',    'DELETE',   'ReviewApiController',      'deleteReview');
 
 // ruta por defecto
 $router->setDefaultRoute(                       'ApiController',            'error');

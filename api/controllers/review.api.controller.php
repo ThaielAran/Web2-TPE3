@@ -22,8 +22,8 @@ class ReviewApiController {
                 $direct = $req->query->direct;
 
         $id_movie = null;
-        if(isset($req->query->id_review)) {
-            $id_movie = $req->query->id_review;
+        if(isset($req->query->id_movie)) {
+            $id_movie = $req->query->id_movie;
         }
         
         $reviews=$this->model->getReviews($id_movie, $orderBy, $direct);
